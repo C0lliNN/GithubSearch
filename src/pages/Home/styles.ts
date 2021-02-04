@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   align-self: center;
-  width: 25%;
-  min-width: 300px;
+  width: 300px;
   margin: auto;
 `;
 
@@ -19,6 +18,6 @@ export const FormContainer = styled.form`
   flex-direction: column;
 
   & button {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 `;
