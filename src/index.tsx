@@ -13,6 +13,9 @@ const theme = {
   secondary: '#B2B2B2',
   fontWeightNormal: 400,
   fontWeightBold: 700,
+  fontSizeSmall: '14px',
+  fontsizeMedium: '16px',
+  fontSizeBig: '18px'
 };
 
 ReactDOM.render(
