@@ -1,14 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const theme = {
+  background: '#232324',
+  dark: '#201F1F',
+  primary: '#8752CC',
+  secondary: '#B2B2B2',
+  fontWeightNormal: 400,
+  fontWeightBold: 700,
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename="/GithubSearch">
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
