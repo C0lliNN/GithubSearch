@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -15,14 +16,18 @@ const theme = {
   fontWeightBold: 700,
   fontSizeSmall: '14px',
   fontsizeMedium: '16px',
-  fontSizeBig: '18px'
+  fontSizeBig: '18px',
 };
+
+const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename="/GithubSearch">
       <ThemeProvider theme={theme}>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
