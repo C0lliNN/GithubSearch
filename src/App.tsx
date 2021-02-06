@@ -16,7 +16,7 @@ function App() {
   return (
     <Container>
       <Switch>
-        <Route path="/users/:user" component={User} />
+        <Route path="/users/:username" component={User} />
         <Route path="/" component={Home} />
       </Switch>
     </Container>
