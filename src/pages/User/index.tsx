@@ -8,6 +8,8 @@ import {
   getStarsCountFromResponse,
   getUserFromResponse,
 } from './utility';
+import Header from '../../components/Header';
+import { Container } from './styles';
 
 interface Params {
   username: string;
@@ -19,6 +21,10 @@ export default function User() {
   const { data: responses } = useQuery(['getUserData', username], () =>
     getUserData(username),
   );
+
+  if (!responses) {
+    return <div>Loading...</div>;
+  }
 
   const [
     userResponse,
@@ -35,9 +41,10 @@ export default function User() {
   console.log(starsCount);
 
   return (
-    <section>
+    <Container>
+      <Header />
       <h2>User Details</h2>
       <h2>Teste</h2>
-    </section>
+    </Container>
   );
 }
