@@ -1,5 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useHistory } from 'react-router';
+import { Slide, Fade } from 'react-awesome-reveal';
+
 import Button from '../../components/Button';
 import { Container, LogoContainer, FormContainer } from './styles';
 import logov from '../../assets/logov.svg';
@@ -21,18 +23,26 @@ export default function Home() {
 
   return (
     <Container>
-      <LogoContainer>
-        <img src={logov} alt="Github Search" />
-      </LogoContainer>
-      <FormContainer onSubmit={handleSearch}>
-        <Input
-          type="text"
-          placeholder="Enter the username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-        <Button>Search</Button>
-      </FormContainer>
+      <Slide direction="down" duration={500}>
+        <Fade>
+          <LogoContainer>
+            <img src={logov} alt="Github Search" />
+          </LogoContainer>
+        </Fade>
+      </Slide>
+      <Slide direction="up" duration={500}>
+        <Fade>
+          <FormContainer onSubmit={handleSearch}>
+            <Input
+              type="text"
+              placeholder="Enter the username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+            <Button>Search</Button>
+          </FormContainer>
+        </Fade>
+      </Slide>
     </Container>
   );
 }
