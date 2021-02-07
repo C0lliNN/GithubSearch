@@ -8,7 +8,6 @@ export interface User {
   company: string;
   followers: number;
   following: number;
-  starsNumber: number;
 }
 
 export interface Repository {

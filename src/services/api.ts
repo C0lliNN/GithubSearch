@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
-import { User, Repository } from '../interfaces';
+/* eslint-disable import/prefer-default-export */
+import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://api.github.com',
@@ -8,13 +8,11 @@ const api = axios.create({
   },
 });
 
-export function getUser(username: string): Promise<AxiosResponse<User>> {
+function getUser(username: string) {
   return api.get(`/users/${username}`);
 }
 
-export function getRepositories(
-  username: string,
-): Promise<AxiosResponse<Repository[]>> {
+function getRepositories(username: string) {
   return api.get(`/users/${username}/repos`, {
     params: {
       per_page: 20,
@@ -22,11 +20,19 @@ export function getRepositories(
   });
 }
 
-export function getStarred(username: string): Promise<AxiosResponse<[]>> {
+function getStarred(username: string) {
   return api.get(`/users/${username}/starred`, {
     params: {
       per_page: 1,
       page: 2,
     },
   });
+}
+
+export function getUserData(username: string) {
+  return axios.all([
+    getUser(username),
+    getRepositories(username),
+    getStarred(username),
+  ]);
 }
