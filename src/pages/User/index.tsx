@@ -12,6 +12,7 @@ import {
 import Header from '../../components/Header';
 import { Container } from './styles';
 import UserInfo from '../../components/UserInfo';
+import Spinner from '../../components/Spinner';
 
 interface Params {
   username: string;
@@ -20,12 +21,13 @@ interface Params {
 export default function User() {
   const { username } = useParams<Params>();
 
-  const { data: responses } = useQuery(['getUserData', username], () =>
-    getUserData(username),
+  const { data: responses, isLoading } = useQuery(
+    ['getUserData', username],
+    () => getUserData(username),
   );
 
-  if (!responses) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return <Spinner style={{ alignSelf: 'center' }} />;
   }
 
   const [
