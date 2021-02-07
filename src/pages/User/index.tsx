@@ -2,6 +2,7 @@ import React from 'react';
 import { AxiosResponse } from 'axios';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router';
+import { Fade, Slide } from 'react-awesome-reveal';
 import { getUserData } from '../../services/api';
 import {
   getRepositoriesFromResponse,
@@ -10,6 +11,7 @@ import {
 } from './utility';
 import Header from '../../components/Header';
 import { Container } from './styles';
+import UserInfo from '../../components/UserInfo';
 
 interface Params {
   username: string;
@@ -36,15 +38,16 @@ export default function User() {
   const repositories = getRepositoriesFromResponse(repositoriesResponse);
   const starsCount = getStarsCountFromResponse(starredResponse);
 
-  console.log(user);
   console.log(repositories);
-  console.log(starsCount);
 
   return (
     <Container>
-      <Header />
-      <h2>User Details</h2>
-      <h2>Teste</h2>
+      <Fade duration={500}>
+        <Slide direction="down" duration={500}>
+          <Header />
+          <UserInfo user={user} startsCount={starsCount} />
+        </Slide>
+      </Fade>
     </Container>
   );
 }

@@ -7,7 +7,7 @@ export const Container = styled.section`
   align-self: flex-start;
   padding: 30px 0;
   box-sizing: border-box;
-  @media (min-width: 768px) {
+  @media (min-width: ${(props) => props.theme.mdBreakPoint}) {
     padding: 40px 0;
   }
 `;

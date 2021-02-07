@@ -17,6 +17,8 @@ const theme = {
   fontSizeSmall: '14px',
   fontsizeMedium: '16px',
   fontSizeBig: '18px',
+  fontSizeExtraBig: '24px',
+  mdBreakPoint: '768px',
 };
 
 const queryClient = new QueryClient();
