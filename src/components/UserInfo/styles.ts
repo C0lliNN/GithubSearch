@@ -41,6 +41,7 @@ export const Info = styled.div`
       align-items: center;
       color: ${(props) => props.theme.secondary};
       margin-right: 15px;
+      margin-bottom: 5px;
       &:last-child {
         margin-right: 0;
       }
