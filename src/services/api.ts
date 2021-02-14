@@ -15,7 +15,7 @@ function getUser(username: string) {
 function getRepositories(username: string) {
   return api.get(`/users/${username}/repos`, {
     params: {
-      per_page: 20,
+      per_page: 30,
     },
   });
 }
