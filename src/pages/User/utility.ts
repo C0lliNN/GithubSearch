@@ -43,3 +43,17 @@ export function getStarsCountFromResponse(response: AxiosResponse): string {
 
   return totalStars;
 }
+
+export function sortRepositories(a: Repository, b: Repository): number {
+  if (a.updated_at < b.updated_at) {
+    return 1;
+  }
+  if (a.updated_at > b.updated_at) {
+    return -1;
+  }
+  return 0;
+}
+
+export function filterRepositories(repository: Repository): boolean {
+  return !!repository.language;
+}

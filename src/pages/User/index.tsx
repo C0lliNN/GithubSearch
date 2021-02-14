@@ -5,14 +5,17 @@ import { useParams } from 'react-router';
 import { Fade, Slide } from 'react-awesome-reveal';
 import { getUserData } from '../../services/api';
 import {
+  filterRepositories,
   getRepositoriesFromResponse,
   getStarsCountFromResponse,
   getUserFromResponse,
+  sortRepositories,
 } from './utility';
 import Header from '../../components/Header';
-import { Container } from './styles';
+import { Container, Repositories } from './styles';
 import UserInfo from '../../components/UserInfo';
 import Spinner from '../../components/Spinner';
+import Repository from '../../components/Repository';
 
 interface Params {
   username: string;
@@ -40,8 +43,6 @@ export default function User() {
   const repositories = getRepositoriesFromResponse(repositoriesResponse);
   const starsCount = getStarsCountFromResponse(starredResponse);
 
-  console.log(repositories);
-
   return (
     <Container>
       <Fade duration={500}>
@@ -50,6 +51,14 @@ export default function User() {
           <UserInfo user={user} startsCount={starsCount} />
         </Slide>
       </Fade>
+      <Repositories>
+        {repositories
+          .filter(filterRepositories)
+          .sort(sortRepositories)
+          .map((repository) => (
+            <Repository key={repository.name} repository={repository} />
+          ))}
+      </Repositories>
     </Container>
   );
 }

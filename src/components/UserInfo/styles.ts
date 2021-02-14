@@ -6,9 +6,11 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-top: 35px;
+  margin-bottom: 20px;
 
   @media (min-width: ${(props) => props.theme.mdBreakPoint}) {
     margin-top: 80px;
+    margin-bottom: 100px;
     flex-direction: row;
   }
 `;

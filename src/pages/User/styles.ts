@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
 export const Container = styled.section`
@@ -10,4 +9,14 @@ export const Container = styled.section`
   @media (min-width: ${(props) => props.theme.mdBreakPoint}) {
     padding: 40px 0;
   }
+`;
+
+export const Repositories = styled.ul`
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
 `;
