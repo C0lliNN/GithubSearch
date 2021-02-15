@@ -1,17 +1,21 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   margin-top: 35px;
   margin-bottom: 20px;
 
   @media (min-width: ${(props) => props.theme.mdBreakPoint}) {
     margin-top: 80px;
     margin-bottom: 100px;
-    flex-direction: row;
+  }
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    @media (min-width: ${(props) => props.theme.mdBreakPoint}) {
+      flex-direction: row;
+    }
   }
 `;
 
