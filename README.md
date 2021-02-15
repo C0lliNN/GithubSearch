@@ -5,7 +5,7 @@ A Web application developed in React/Typescript that allows users to search for 
 ![Login Page](https://i.imgur.com/JcdbhDr.png)
 ![User Page](https://i.imgur.com/heBynZA.png)
 
-### [Demo](https://c0llinn.github.io/GitHubSearch)
+### [Demo](https://c0llinn.github.io/GithubSearch)
 
 ## Tech
 
