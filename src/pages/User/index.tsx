@@ -2,7 +2,6 @@ import React from 'react';
 import { AxiosResponse } from 'axios';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router';
-import { Fade, Slide } from 'react-awesome-reveal';
 import { getUserData } from '../../services/api';
 import {
   filterRepositories,
@@ -16,6 +15,7 @@ import { Container, Repositories } from './styles';
 import UserInfo from '../../components/UserInfo';
 import Spinner from '../../components/Spinner';
 import Repository from '../../components/Repository';
+import NotFounded from '../../components/NotFounded';
 
 interface Params {
   username: string;
@@ -24,13 +24,23 @@ interface Params {
 export default function User() {
   const { username } = useParams<Params>();
 
-  const { data: responses, isLoading } = useQuery(
+  const { data: responses, isLoading, error } = useQuery(
     ['getUserData', username],
     () => getUserData(username),
+    { retry: false, refetchOnWindowFocus: false },
   );
 
   if (isLoading) {
     return <Spinner style={{ alignSelf: 'center' }} />;
+  }
+
+  if (error) {
+    return (
+      <Container>
+        <Header />
+        <NotFounded />
+      </Container>
+    );
   }
 
   const [
@@ -45,12 +55,8 @@ export default function User() {
 
   return (
     <Container>
-      <Fade duration={500}>
-        <Slide direction="down" duration={500}>
-          <Header />
-          <UserInfo user={user} startsCount={starsCount} />
-        </Slide>
-      </Fade>
+      <Header />
+      <UserInfo user={user} startsCount={starsCount} />
       <Repositories>
         {repositories
           .filter(filterRepositories)
