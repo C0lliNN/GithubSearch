@@ -21,3 +21,7 @@ A Web application developed in React/Typescript that allows users to search for 
 After you clone the project, you can run:
 
 ### `yarn install && yarn start`
+
+### Inspiration
+
+I inspired myself in the [GitHub Search](https://github.com/Diegooliveyra/Github-Search) repository from [Diego Oliveira](https://github.com/Diegooliveyra)
